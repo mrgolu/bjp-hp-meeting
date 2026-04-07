@@ -370,11 +370,12 @@ async function loadSheetData() {
     const rows = parseCSV(text);
     lookup = {};
     rows.forEach(cols => {
-      const id = cols[0];
-      const designation = cols[1];
-      const name = cols[2];
-      const mobileRaw = cols[3] || '';
-      const mobiles = mobileRaw.split(/[\/\\\n\r]/).map(m => m.replace(/\D/g, '')).filter(m => m.length >= 10);
+      // A:दायित्व | B:क्र. | C:नाम | D:पता | E:मोबाइल
+      const designation = cols[0] || '';
+      const id = cols[1] || '';
+      const name = cols[2] || '';
+      const mobileRaw = cols[4] || '';
+      const mobiles = mobileRaw.split(/[\/\\\n\r\s]+/).map(m => m.replace(/\D/g, '')).filter(m => m.length >= 10);
       if (name && mobiles.length > 0) {
         mobiles.forEach(mob => { lookup[mob] = { id, name, designation, mobiles }; });
       }
