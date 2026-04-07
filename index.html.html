@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>प्रदेश पदाधिकारी बैठक - मंडी</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=DM+Sans:wght@300;400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron: #FF6B00;
+    --saffron-light: #FF8C00;
+    --green: #138808;
+    --navy: #000080;
+    --white: #FFFFFF;
+    --bg: #FFF8F0;
+    --card: #FFFFFF;
+    --border: #FFE0C0;
+    --text: #1a1a1a;
+    --muted: #666;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 40px;
+  }
+
+  /* HEADER */
+  .header {
+    width: 100%;
+    background: linear-gradient(135deg, var(--saffron) 0%, var(--saffron-light) 100%);
+    padding: 24px 20px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(255,107,0,0.3);
+  }
+
+  .header-logo {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .header-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .header-sub {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    margin-top: 6px;
+  }
+
+  .lotus {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  /* MAIN CONTENT */
+  .main {
+    width: 100%;
+    max-width: 480px;
+    padding: 28px 20px 0;
+  }
+
+  /* LOOKUP CARD */
+  .lookup-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 24px rgba(255,107,0,0.1);
+    border: 1px solid var(--border);
+  }
+
+  .lookup-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .lookup-sub {
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .input-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+
+  input[type="tel"] {
+    width: 100%;
+    padding: 14px 14px 14px 44px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 18px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: #FFFAF5;
+    outline: none;
+    transition: border-color 0.2s;
+    letter-spacing: 0.05em;
+  }
+
+  input[type="tel"]:focus {
+    border-color: var(--saffron);
+    background: #fff;
+  }
+
+  .btn-search {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--saffron), var(--saffron-light));
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(255,107,0,0.3);
+  }
+
+  .btn-search:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,107,0,0.4); }
+  .btn-search:active { transform: translateY(0); }
+
+  /* RESULT AREA */
+  #result {
+    margin-top: 24px;
+  }
+
+  /* PROFILE CARD */
+  .profile-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 24px rgba(0,128,0,0.1);
+    border: 2px solid var(--green);
+    animation: slideIn 0.4s ease;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .profile-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--green), #1aad0a);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+
+  .profile-serial {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .profile-name {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .profile-designation {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 16px;
+    color: var(--saffron);
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .profile-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: var(--text);
+  }
+
+  .profile-row-icon { font-size: 18px; }
+
+  .welcome-msg {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #FFF3E0, #FFF8F0);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 14px;
+    color: var(--saffron);
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid #FFE0B2;
+  }
+
+  /* NOT FOUND CARD */
+  .notfound-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    border: 2px solid #FFB74D;
+    animation: slideIn 0.4s ease;
+    text-align: center;
+  }
+
+  .notfound-icon { font-size: 40px; margin-bottom: 12px; }
+
+  .notfound-title {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .notfound-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .btn-register {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #FF8C00, #FFB74D);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s;
+    box-shadow: 0 4px 16px rgba(255,140,0,0.3);
+  }
+
+  .btn-register:hover { transform: translateY(-1px); }
+
+  /* ERROR */
+  .error-msg {
+    color: #c62828;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 12px;
+    color: #bbb;
+  }
+
+  .party-stripe {
+    height: 5px;
+    background: linear-gradient(to right, var(--saffron) 33%, var(--white) 33%, var(--white) 66%, var(--green) 66%);
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="party-stripe"></div>
+
+<div class="header">
+  <div class="lotus">🪷</div>
+  <div class="header-logo">भारतीय जनता पार्टी — हिमाचल प्रदेश</div>
+  <div class="header-title">प्रदेश पदाधिकारी बैठक</div>
+  <div class="header-sub">📍 मंडी &nbsp;|&nbsp; 6 अप्रैल 2026 &nbsp;|&nbsp; दोपहर 2:00 - 5:00 बजे</div>
+</div>
+
+<div class="main">
+  <div class="lookup-card">
+    <div class="lookup-title">अपना मोबाइल नंबर दर्ज करें</div>
+    <div class="lookup-sub">नंबर डालें — आपकी प्रोफ़ाइल खुल जाएगी</div>
+
+    <div class="input-wrap">
+      <span class="input-icon">📱</span>
+      <input type="tel" id="mobileInput" placeholder="10 अंकों का नंबर" maxlength="10" inputmode="numeric" />
+    </div>
+
+    <button class="btn-search" onclick="searchMember()">🔍 खोजें</button>
+    <div class="error-msg" id="errorMsg">कृपया 10 अंकों का सही मोबाइल नंबर डालें।</div>
+    <div id="loadStatus" style="text-align:center;font-size:12px;margin-top:10px;color:#FF8C00;"></div>
+  </div>
+
+  <div id="result"></div>
+
+  <div class="footer">BJP Himachal Pradesh &copy; 2026</div>
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vReYoE4IPNeCRyj45rFwHK9bAjGOx9voAk6N9HVPPddJomRp_jIjnc4j8RoiBF7ZkZGS_ZOcNajdyx1/pub?output=csv";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzgHTktykJeQCh00xjqv_2GBGOaNEPfv7j8aH2BLfjQkqIxh4leVgaA_Aqhu93A-bOwg/exec";
+// ────────────────────────────────────────────────────────
+
+let lookup = {};
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    // Handle quoted CSV fields
+    const cols = [];
+    let cur = '', inQ = false;
+    for (let c of lines[i]) {
+      if (c === '"') { inQ = !inQ; }
+      else if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+      else cur += c;
+    }
+    cols.push(cur.trim());
+    if (cols.length >= 4 && cols[0]) rows.push(cols);
+  }
+  return rows;
+}
+
+async function loadSheetData() {
+  const statusEl = document.getElementById('loadStatus');
+  try {
+    statusEl.textContent = '⏳ डेटा लोड हो रहा है...';
+    statusEl.style.color = '#FF8C00';
+    const res = await fetch(CSV_URL);
+    const text = await res.text();
+    const rows = parseCSV(text);
+    lookup = {};
+    rows.forEach(cols => {
+      const id = cols[0];
+      const designation = cols[1];
+      const name = cols[2];
+      const mobileRaw = cols[3] || '';
+      const mobiles = mobileRaw.split(/[\/\\\n\r]/).map(m => m.replace(/\D/g, '')).filter(m => m.length >= 10);
+      if (name && mobiles.length > 0) {
+        mobiles.forEach(mob => { lookup[mob] = { id, name, designation, mobiles }; });
+      }
+    });
+    statusEl.textContent = `✓ ${rows.length} सदस्यों का डेटा लोड हुआ`;
+    statusEl.style.color = '#138808';
+  } catch (err) {
+    statusEl.textContent = '⚠ डेटा लोड नहीं हुआ — पेज रिफ्रेश करें';
+    statusEl.style.color = '#c62828';
+  }
+}
+
+window.addEventListener('load', loadSheetData);
+
+
+
+
+async function searchMember() {
+  const input = document.getElementById('mobileInput').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  const result = document.getElementById('result');
+  const btn = document.querySelector('.btn-search');
+
+  errorMsg.style.display = 'none';
+  result.innerHTML = '';
+
+  if (input.length !== 10 || !/^\d{10}$/.test(input)) {
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  const member = lookup[input];
+
+  if (!member) {
+    result.innerHTML = `
+      <div class="notfound-card">
+        <div class="notfound-icon">🔍</div>
+        <div class="notfound-title">नंबर नहीं मिला</div>
+        <div class="notfound-sub">यह नंबर हमारी सूची में नहीं है।<br>कृपया नीचे अपना पंजीकरण करें।</div>
+        <a class="btn-register" href="https://docs.google.com/forms/d/e/1FAIpQLSdZKeNIYPrGwJR7Ln1F6gHz6i07vdZ28QJ4MEoo1NVuay5F9w/viewform?usp=dialog" target="_blank">
+          📝 पंजीकरण फॉर्म भरें
+        </a>
+      </div>
+    `;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+
+  // Loading
+  btn.textContent = '⏳ दर्ज हो रहा है...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(`${SCRIPT_URL}?action=checkin&mobile=${input}`);
+    const data = await res.json();
+
+    btn.textContent = '🔍 खोजें';
+    btn.disabled = false;
+
+    if (data.alreadyCheckedIn) {
+      result.innerHTML = `
+        <div class="profile-card" style="border-color:#FF8C00;">
+          <div class="profile-badge" style="background:linear-gradient(135deg,#FF8C00,#FFB74D);">⚠ पहले से उपस्थित</div>
+          <div class="profile-serial">क्र. ${member.id}</div>
+          <div class="profile-name">${member.name}</div>
+          <div class="profile-designation">${member.designation}</div>
+          <div class="profile-row"><span class="profile-row-icon">🕐</span><span>Check-in: ${data.time}</span></div>
+          <div class="welcome-msg" style="color:#FF8C00;">आप पहले से उपस्थिति दर्ज कर चुके हैं।</div>
+        </div>
+      `;
+    } else {
+      result.innerHTML = `
+        <div class="profile-card">
+          <div class="profile-badge">✓ उपस्थिति दर्ज हो गई</div>
+          <div class="profile-serial">क्र. ${member.id}</div>
+          <div class="profile-name">${member.name}</div>
+          <div class="profile-designation">${member.designation}</div>
+          <div class="profile-row"><span class="profile-row-icon">📱</span><span>${member.mobiles.join(' / ')}</span></div>
+          <div class="profile-row"><span class="profile-row-icon">🕐</span><span>Check-in: ${data.time}</span></div>
+          <div class="welcome-msg">
+            🙏 बैठक में आपका स्वागत है!<br>
+            <span style="font-size:12px;font-weight:400;">मंडी — 6 अप्रैल 2026</span>
+          </div>
+        </div>
+      `;
+    }
+  } catch (err) {
+    btn.textContent = '🔍 खोजें';
+    btn.disabled = false;
+    // Fallback — show profile even if sheet fails
+    result.innerHTML = `
+      <div class="profile-card">
+        <div class="profile-badge">✓ सदस्य पाए गए</div>
+        <div class="profile-serial">क्र. ${member.id}</div>
+        <div class="profile-name">${member.name}</div>
+        <div class="profile-designation">${member.designation}</div>
+        <div class="profile-row"><span class="profile-row-icon">📱</span><span>${member.mobiles.join(' / ')}</span></div>
+        <div class="welcome-msg">
+          🙏 बैठक में आपका स्वागत है!<br>
+          <span style="font-size:12px;font-weight:400;">मंडी — 6 अप्रैल 2026</span>
+        </div>
+      </div>
+    `;
+  }
+
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// Enter key support
+document.getElementById('mobileInput').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') searchMember();
+});
+</script>
+</body>
+</html>
